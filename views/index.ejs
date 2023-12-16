@@ -1,0 +1,31 @@
+<% include ./partials/header.ejs %>
+<div class="w-full  px-10 py-3 flex justify-between bg-red-300 text-black items-center">
+  <h3>Pinterest</h3>
+  <div class="flex gap-10 items-center text-black">
+    <a href="/">Profile</a><a href="/feed">Feed</a><a class="bg-red-700 px-3 py-2 text-white rounded-lg" href="/logout">Logout</a>
+
+  </div>
+   </div>
+  <div class="w-full h-screen bg-center bg-cover bg-[url('https://images.unsplash.com/photo-1640102371408-5fc0c42a8792?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] flex items-center justify-center" >
+    <div class="w-[30vw] h-[70vh] bg-white px-20 py-5 rounded-[30px]" >
+      <div class=" flex flex-wrap items-center justify-center">
+        <div class="w-10 h-10 rounded-full bg-pink-200 overflow-hidden">
+          <img class="w-full h-full object-cover bottom-0" src="https://imgs.search.brave.com/a83NkaqqDTj3tcAegECcA0_yJbGN7l351PRdOQhRHRo/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9sb2dv/d2lrLmNvbS9jb250/ZW50L3VwbG9hZHMv/aW1hZ2VzLzQxOF9w/aW50ZXJlc3QuanBn" alt="">
+        </div>
+      </div>
+      
+      <h1 class="text-4xl text-center font-semibold text-zinc-700 tracking-tighter capitialize leading-none">Welcome To Pinterest</h1>
+      <br>
+     <form action="/login" method="post">
+      <input class="block border-2 rounded-md mt-2 px-3 py-2 w-full"  type="text" name="username" placeholder="Username">
+      <input class="block border-2 rounded-md mt-2 px-3 py-2 w-full" type="password" name="password" placeholder="password">
+      <a class="mt-2 font-semibold text-zinc-600 inline-block" href="#">Forget Password?</a>
+      <input class="block border-2 rounded-full mt-2 px-3 py-2 w-full bg-red-600 text-white rounded-full" type="submit" value="Login" >
+      <p class="text-sx text-zinc-600 font-semibold mt-2 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa ut temporibus incidunt!</p>
+     
+     </form>
+     <a class="inline-block mt-7 text-sl font-semibold text-blue-700 text-center" href="/register">Don't have an account?</a>
+    </div>
+  </div>
+<% include ./partials/footer.ejs %>
+  
