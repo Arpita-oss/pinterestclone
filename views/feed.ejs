@@ -9,9 +9,9 @@
     <div class="cards flex flex-wrap gap-5">
         <% posts.forEach(function(elem){ %>
             <div>
-                <div class="card w-52 h-40 overflow-hidden">
-                    <img class="w-full h-full rounded-lg object-cover" src="/images/uploads/<%=elem.Postimage %>" alt="">
-                </div>
+               <a href="/show/posts/<%=elem._id %>"> <div id="#postdiv" class="card w-52 h-40 overflow-hidden">
+                <img class="w-full h-full rounded-lg object-cover" src="/images/uploads/<%=elem.Postimage %>" alt="">
+            </div></a>
                 <h3 class="text-white"><%= elem.title %></h3>
                 <h6 class=" text-xs text-zinc-300">@<%= elem.user.username %></h6>
             </div>
@@ -21,5 +21,13 @@
 
     </div>
    </div>
+<script>
+   document.querySelectorAll('.card').forEach(function(card) {
+    card.addEventListener("click", function() {
+      card.querySelector("a").click();
+    });
+  });
+</script>
+
 
    <% include ./partials/footer.ejs %>

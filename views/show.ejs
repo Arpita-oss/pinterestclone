@@ -9,10 +9,15 @@
     <div class="cards flex flex-wrap gap-5">
         <% user.posts.forEach(function(elem){ %>
             <div>
-                <div class="card w-52 h-40 overflow-hidden">
-                    <img class="w-full h-full rounded-lg object-cover" src="/images/uploads/<%=elem.Postimage %>" alt="">
-                </div>
-                <h3 class="text-white"><%= elem.title %></h3>
+                  <a href="/userpin/posts/<%= elem._id %>" class="mt-2 text-white text-sm">
+                    <div class="card w-52 h-40 overflow-hidden">
+                      <img class="w-full h-full rounded-lg object-cover" src="/images/uploads/<%=elem.Postimage %>" alt="">
+                    </div>
+                </a>
+               
+               <h3 class="mt-2 text-white text-sm"><%= elem.title %></h3>
+                
+             
             </div>
            
        <% }) %>

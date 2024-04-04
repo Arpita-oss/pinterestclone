@@ -35,6 +35,11 @@ router.get('/profile',isLoggedIn, async function(req, res, next) {
   console.log(user)
   res.render('profile',{user});
 });
+router.get('/show/posts/:postid', isLoggedIn, async function(req,res,next){
+  const user = await userModel.findOne({username: req.session.passport.user});
+  const posts = await postModel.findById(req.params.postid).populate("user");
+  res.render('cardid',{user,posts, nav: true});
+})
 router.get('/show/posts',isLoggedIn, async function(req, res, next) {
   const user =  await userModel.findOne({username:req.session.passport.user}).populate("posts")
   res.render('show',{user});
@@ -46,8 +51,38 @@ router.get('/feed',isLoggedIn, async function(req, res, next) {
 });
 router.get('/add',isLoggedIn, async function(req, res, next) {
   const user =  await userModel.findOne({username:req.session.passport.user})
+  
+  
   res.render('edit',{user});
 });
+//muje ek user chaiye jo loggin ho
+//uske baad muje jis user ki post mai khul rhi hu uski postbade area mai chaiye
+//jis  user ki post pe click kru bs whi khulni chaiye
+//abhi aisa aa rha h ki jonlogin h uakinpost bs badi honri h
+//but I wamt ki jis user ki post openn kru uski post khulni chaiye
+//USKE liye chaiye muje ki user ki post id or usi user ko m populate kr
+// ... (your existing code)
+
+router.get('/userpin/posts/:postid', isLoggedIn, async function(req, res, next) {
+  const user = await userModel.findOne({username: req.session.passport.user}).populate('posts');
+  const post = await postModel.findById(req.params.postid);
+  res.render('userpin',{user,post, nav: true});
+});
+
+
+// router.get('/userpost/:postId', isLoggedIn, async function(req, res, next) {
+//   const postId = req.params.postId;
+//   const post = await postModel.findById(postId).populate("user")
+  
+//   if (!post) {
+//     // Handle post not found
+//     res.render('error', { message: 'Post not found', error: { status: 404 } });
+//     return;u
+//   }
+
+//   res.render('userpost', { user: post.user, post: post });
+// });
+
 router.post('/createPost',isLoggedIn,upload.single("Postimage"), async function(req, res, next) {
   const user =  await userModel.findOne({username:req.session.passport.user})
   const post = await postModel.create({
